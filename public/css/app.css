@@ -1,0 +1,6 @@
+.category-img {
+    width: 100%;
+    height: 200px; /* أو أي ارتفاع يناسبك */
+    object-fit: cover;
+    border-radius: 10px;
+}

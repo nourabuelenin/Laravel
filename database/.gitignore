@@ -1,0 +1,9 @@
+*.sqlite*
+/node_modules
+/vendor
+.env
+.idea
+.vscode
+/storage/*.key
+/public/storage
+/bootstrap/cache/*
