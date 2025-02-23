@@ -1,5 +1,7 @@
 <?php
-
+use App\Http\Controllers\AdminAuthController;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -8,3 +10,24 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::get('/',[HomeController::class, 'index']);
+
+//user login routes
+Route::get('/login', [AuthController::class, 'ShowLoginForm'])->name('auth.login.form');
+Route::post('/login', [AuthController::class, 'login'])->name('auth.login');
+
+//user register routes
+Route::get('/register', [AuthController::class, 'ShowRegisterForm'])->name('auth.register.form');
+Route::post('/register', [AuthController::class, 'register'])->name('auth.register');
+
+//user register routes
+// Route::get('/register', [AuthController::class, 'ShowRegisterForm'])->name('auth.register.form'); logout doesn't use get because we don't want anything in url
+Route::post('/logout', [AuthController::class, 'logout'])->name('auth.logout');
+
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
+
+//admin login route
+Route::get('/admin/login', [AdminAuthController::class, 'ShowAdminLoginForm'])->name('admin.login.form');
+Route::post('/admin/login', [AdminAuthController::class, 'login'])->name('admin.login');
+
+//admin logout route
+Route::post('/admin/logout', [AdminAuthController::class, 'logout'])->name('admin.logout');
