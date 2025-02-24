@@ -3,6 +3,7 @@ use App\Http\Controllers\AdminAuthController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
+use App\Http\Middleware\AdminMiddleware;
 use Illuminate\Support\Facades\Route;
 
 // Route::get('/', function () {
@@ -10,6 +11,11 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::get('/',[HomeController::class, 'index']);
+
+//admin guard routes
+Route::middleware([AdminMiddleware::class])->group(function(){
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
+});
 
 //user login routes
 Route::get('/login', [AuthController::class, 'ShowLoginForm'])->name('auth.login.form');
@@ -23,7 +29,6 @@ Route::post('/register', [AuthController::class, 'register'])->name('auth.regist
 // Route::get('/register', [AuthController::class, 'ShowRegisterForm'])->name('auth.register.form'); logout doesn't use get because we don't want anything in url
 Route::post('/logout', [AuthController::class, 'logout'])->name('auth.logout');
 
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
 
 //admin login route
 Route::get('/admin/login', [AdminAuthController::class, 'ShowAdminLoginForm'])->name('admin.login.form');

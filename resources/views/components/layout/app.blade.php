@@ -29,7 +29,21 @@
     </div>
 @endif
 
+{{--Display error messages--}}
+@error('error')
+    <div aria-live="polite" aria-atomic="true" class="position-relative">
+        <div class="toast-container top-0 end-0 p-3">
+            <!-- Then put toasts within -->
+            <div id="successToast" class="toast text-white bg-danger toast-custom" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="toast-body">
+                    {{ $message }}
+                </div>
+            </div>
+        </div>
+    </div>
+@enderror
 
+{{-- Main Content --}}
 <div class="container">
     {{ $slot }}
 </div>
