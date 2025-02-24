@@ -11,7 +11,7 @@
 <body>
 
 {{-- Navbar --}}
-@if (!in_array(Route::CurrentRouteName(), ['auth.login.form', 'auth.register.form']))
+@if (!in_array(Route::CurrentRouteName(), ['auth.login.form', 'auth.register.form', 'auth.admin-login.form']))
 <x-navbar/>
 @endif
 
@@ -27,15 +27,17 @@
             </div>
         </div>
     </div>
+@endif
+
 
 <div class="container">
     {{ $slot }}
 </div>
 
 {{-- Footer --}}
-@if (!in_array(Route::CurrentRouteName(), ['auth.login.form', 'auth.register.form']))
+@if (!in_array(Route::CurrentRouteName(), ['auth.login.form', 'auth.register.form', 'auth.admin-login.form']))
     <x-footer/>
-<x-footer/>
+@endif
 
 <script src="{{ asset('bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 <script>

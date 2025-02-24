@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 
 
 class AdminAuthController extends Controller
@@ -16,7 +16,7 @@ class AdminAuthController extends Controller
 
     public function login(Request $request){
         //validate user inputs using request
-        $request -> validate([
+        $credentials = $request -> validate([
             'email' => 'required|email',
             'password' => 'required'
         ]);
@@ -31,7 +31,7 @@ class AdminAuthController extends Controller
     }
 
     public function logout(){
-        Auth::logout();
-        return redirect()->route('auth.login.form');
+        Auth::guard('admin')->logout();
+        return redirect()->route('admin.login')->with('success', 'Admin Logged out successfully.');
     }
 }

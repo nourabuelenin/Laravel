@@ -1,11 +1,13 @@
 <div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;">
     <div class="card shadow-lg p-4" style="width: 400px;">
         <h3 class="text-center mb-4">{{ $submitButtonName ?? 'Submit' }}</h3>
+        
         @error('login-error')
         <div class="alert alert-danger">{{ $message }}</div>
         @enderror
+        
         <form action="{{ $action ?? request()->url() }}" method="{{ $method ?? 'POST' }}" class="needs-validation" novalidate>
-            @csrf
+            @csrf {{-- protects data comming from database}}
 
             {{--            will discuss later--}}
             {{--            @if(isset($method) && strtoupper($method) !== 'GET')--}}

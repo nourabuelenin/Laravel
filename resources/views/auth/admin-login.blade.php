@@ -7,19 +7,22 @@
 {{--                message--}}
             </div>
 {{--            end_error--}}
-            <form action="#" method="POST">
-                mass_assigment
-
+            <form action="{{ route('admin.login') }}" method="POST">
+                @csrf
                 <div class="mb-3">
                     <label class="form-label">Email</label>
-                    <input type="email" name="email" class="form-control" placeholder="admin@example.com" required>
+                    <input type="email" name="email" class="form-control" placeholder="admin@example.com" value={{old('email')}}>
                 </div>
-
+                @error('email')
+                    <div class="text-danger">{{ $message }}</div>
+                @enderror
                 <div class="mb-3">
                     <label class="form-label">Password</label>
-                    <input type="password" name="password" class="form-control" placeholder="••••••••" required>
+                    <input type="password" name="password" class="form-control" placeholder="••••••••">
                 </div>
-
+                @error('password')
+                <div class="text-danger">{{ $message }}</div>
+                @enderror                
                 <button type="submit" class="btn btn-primary w-100">Login</button>
             </form>
         </div>
