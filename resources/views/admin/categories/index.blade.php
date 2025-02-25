@@ -1,7 +1,7 @@
 <x-admin-layout.app title="Categories">
     <div class="container mt-4">
         <h2>📂 Categories Management</h2>
-        <a href="admin.categories.create" class="btn btn-primary mb-3">➕ Add New Category</a>
+        <a href="{{ route('admin.categories.create') }}" class="btn btn-primary mb-3">➕ Add New Category</a>
 
         <div class="card shadow">
             <div class="card-body">
@@ -28,9 +28,9 @@
                                 @endif
                             </td>
                             <td>
-                                <a href="{{--{{route('admin.categories.edit')}}--}}" class="btn btn-sm btn-warning">✏
+                                <a href="{{route('admin.categories.edit', $category)}}" class="btn btn-sm btn-warning">✏
                                     Edit</a>
-                                <form action="{{--{{route('admin.categories.destroy')}}--}}" method="POST"
+                                <form action="{{-- {{route('admin.categories.destroy')}}--}}" method="POST"
                                     class="d-inline delete-form">
                                     @csrf
                                     @method('DELETE') {{-- binding for DELETE method here --}}
