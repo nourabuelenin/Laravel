@@ -109,7 +109,9 @@ class CategoryController extends Controller
         }
 
         //generate a new slug
-        $categoryData['slug'] = strtolower(str_replace(' ', '_', $categoryData['name']));
+        if($categoryData['name'] != $category->name){
+            $categoryData['slug'] = strtolower(str_replace(' ', '_', $categoryData['name']));
+        }
 
         //update category 
         $category->update($categoryData);
