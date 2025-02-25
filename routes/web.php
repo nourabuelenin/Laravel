@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-Route::get('/',[HomeController::class, 'index']);
+Route::get('/',[HomeController::class, 'index'])->name('home');
 
 //admin guard routes
 Route::middleware([AdminMiddleware::class])->group(function(){

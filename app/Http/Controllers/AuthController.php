@@ -38,8 +38,8 @@ class AuthController extends Controller
     public function login(Request $request){
         //validate user inputs using request
         $credentials = $request -> validate([
-            'email' => 'required|email|unique:users',
-            'password' => 'required|min:8|confirmed' 
+            'email' => 'required|email',
+            'password' => 'required|min:8' 
         ]);
     
         //check if user exists
