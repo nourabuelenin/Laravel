@@ -2,6 +2,7 @@
 use App\Http\Controllers\AdminAuthController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Middleware\AdminMiddleware;
 use Illuminate\Support\Facades\Route;
@@ -13,9 +14,18 @@ use Illuminate\Support\Facades\Route;
 Route::get('/',[HomeController::class, 'index'])->name('home');
 
 //admin guard routes
-Route::middleware([AdminMiddleware::class])->group(function(){
-    Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
+Route::middleware([AdminMiddleware::class])
+->name('admin.')
+->prefix('admin')
+->group(function(){
+    //Admin dashboard route
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    
+    //Admin category route
+    Route::resource('categories', CategoryController::class)->except('show');
 });
+
+//admin category routes
 
 //user login routes
 Route::get('/login', [AuthController::class, 'ShowLoginForm'])->name('auth.login.form');

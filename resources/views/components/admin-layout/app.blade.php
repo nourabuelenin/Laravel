@@ -53,7 +53,7 @@
                 <a href="" class="nav-link text-white">🛍️ Products</a>
             </li>
             <li class="nav-item mb-2">
-                <a href="" class="nav-link text-white">📂 Categories</a>
+                <a href="{{ route('admin.categories.index') }}" class="nav-link text-white">📂 Categories</a>
             </li>
             <li class="nav-item mb-2">
                 <a href="#" class="nav-link text-white">👥 Users</a>
