@@ -30,7 +30,7 @@
                             <td>
                                 <a href="{{route('admin.categories.edit', $category)}}" class="btn btn-sm btn-warning">✏
                                     Edit</a>
-                                <form action="{{-- {{route('admin.categories.destroy')}}--}}" method="POST"
+                                <form action="{{route('admin.categories.destroy', $category)}}" method="POST"
                                     class="d-inline delete-form">
                                     @csrf
                                     @method('DELETE') {{-- binding for DELETE method here --}}
