@@ -44,11 +44,11 @@
        :fields="[
         ['name' => 'name', 'label' => 'Name', 'type' => 'text'],
         ['name' => 'email', 'label' => 'Email', 'type' => 'email'],
-        ['name' => 'phone_number', 'label' => 'Phone Number', 'type' => 'text'],
+        ['name' => 'phone', 'label' => 'Phone Number', 'type' => 'text'],
         ['name' => 'address', 'label' => 'Address', 'type' => 'text'],
         ['name' => 'password', 'label' => 'Password', 'type' => 'password'],
         ['name' => 'password_confirmation', 'label' => 'Confirm Password', 'type' => 'password']
     ]"
-        submitButtonName="ٌRegister"
+        submitButtonName="Register"
     />
 </x-layout.app>

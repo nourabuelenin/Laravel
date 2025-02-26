@@ -28,7 +28,7 @@
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end">
                             <li>
-                                <a class="dropdown-item" href="#">Profile</a>
+                                <a class="dropdown-item" href="{{ route('user.profile') }}">Profile</a>
                             </li>
                             <li>
                                 <form action="{{ route('auth.logout') }}" method="POST">

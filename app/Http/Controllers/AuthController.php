@@ -24,15 +24,19 @@ class AuthController extends Controller
             // 'name' => ['required', 'string', 'min:5', 'max:200'],
             'name' => 'required|string|min:5|max:200',
             'email' => 'required|email|unique:users',
-            'password' => 'required|min:8|confirmed' 
+            'phone' => ['required', 'string', 'regex:/^(010|011|012)\d{8}$/'],
+            'address' => 'required|string|min:10|max:200',
+            'password' => 'required|min:8|confirmed'
         ]);
 
         User::create([
             'name' => $request->name,
             'email' => $request->email,
+            'phone' => $request->phone,
+            'address' => $request->address,
             'password' => bcrypt($request->password)
         ]);
-        return redirect()->route('auth.login.form');
+        return redirect()->route('auth.login.form')->with('success', 'Registration successful!');
     }
 
     public function login(Request $request){
