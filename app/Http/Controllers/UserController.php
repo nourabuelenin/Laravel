@@ -2,35 +2,39 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 
 class UserController extends Controller
 {
     /**
      * Display the specified resource.
      */
-    public function show(User $user)
+    public function show()
     {
+        $user = Auth::user(); // Get the authenticated user
         return view('user.profile.show', compact('user'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(User $user)
+    public function edit()
     {
+        $user = Auth::user(); // Get the authenticated user
         return view('user.profile.edit', compact('user'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request)
     {
-         // Validate the request data
-         $request->validate([
+        $user = Auth::user(); // Get the authenticated user
+
+        // Validate the request data
+        $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users,email,' . $user->id,
             'phone' => 'nullable|string|max:20',
@@ -46,5 +50,6 @@ class UserController extends Controller
         ]);
 
         // Redirect back to the profile page with a success message
-        return redirect()->route('user.profile')->with('success', 'Profile updated successfully!');    }
+        return redirect()->route('user.profile')->with('success', 'Profile updated successfully!');
+    }
 }
