@@ -27,7 +27,7 @@
                             <td>
                                 @if($category->image)
                                     <img src="{{ asset($category->image) }}" alt="{{ $category->name }}"
-                                    style="height: 50px;">
+                                    style="height: 50px;">                             
                                 @endif
                             </td>
                             <td>
@@ -47,5 +47,6 @@
             </div>
             <div class="mx-2"></div>
         </div>
+        @endif
     </div>
 </x-admin-layout.app>

@@ -54,7 +54,7 @@ class CategoryController extends Controller
         }
         //create category 
         $categoryData['slug'] = strtolower(str_replace(' ', '_', $categoryData['name']));
-        Category::created($categoryData);
+        Category::create($categoryData);
         return redirect()->route('admin.categories.index')->with('success', 'Category created successfully.');
     }
 
